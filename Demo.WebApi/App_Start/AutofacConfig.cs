@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Http;
 using Demo.Common;
 using Demo.Service;
+using Demo.Repository;
 
 namespace Demo.WebApi
 {
@@ -25,7 +26,7 @@ namespace Demo.WebApi
 
             builder.RegisterType<AppSetting>().As<IAppSetting>().InstancePerRequest();
             builder.RegisterType<DemoSerive>().As<IDemoSerive>().InstancePerRequest();
-            //builder.RegisterType<FetPayRepository>().As<IFetPayRepository>().InstancePerRequest();
+            builder.RegisterType<DemoRepository>().As<IDemoRepository>().InstancePerRequest();
 
             // 將依賴關係解析器(DependencyResolver)設置為Autofac。
             var container = builder.Build();
