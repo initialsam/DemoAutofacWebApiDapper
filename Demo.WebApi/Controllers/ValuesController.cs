@@ -23,7 +23,8 @@ namespace Demo.WebApi.Controllers
 
         // GET api/values/5
         public string Get(int id)
-        { 
+        {
+            _demoService.DemoCrud(id);
             return _demoService.HappyString(id);
         }
 

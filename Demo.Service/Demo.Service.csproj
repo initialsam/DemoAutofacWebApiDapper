@@ -45,5 +45,11 @@
     <Compile Include="IDemoSerive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.Repository\Demo.Repository.csproj">
+      <Project>{2E868FDC-D993-4D87-80F3-86A9253D039A}</Project>
+      <Name>Demo.Repository</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

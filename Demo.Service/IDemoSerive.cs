@@ -9,5 +9,6 @@ namespace Demo.Service
     public interface IDemoSerive
     {
         string HappyString(int number);
+        bool DemoCrud(int value);
     }
 }
