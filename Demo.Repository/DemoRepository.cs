@@ -19,6 +19,22 @@ namespace Demo.Repository
         }
         public bool DemoCrud(int id)
         {
+            /*
+USE [Demo]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Product](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](50) NULL,
+	[Price] [int] NULL,
+	[CreateDate] [datetime] NOT NULL
+) ON [PRIMARY]
+GO
+
+             */
             using (var cnn = new SqlConnection(_appSetting.DataContext))
             {
                 var sql = @"
