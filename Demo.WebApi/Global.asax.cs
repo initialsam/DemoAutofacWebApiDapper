@@ -21,7 +21,8 @@ namespace Demo.WebApi
             //只回Json格式 所以移除Xml
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
 
-            AutofacConfig.Register();
+            AutofacConfig.RegisterWebApi2();
+            AutofacConfig.RegisterMvc5();
         }
     }
 }
