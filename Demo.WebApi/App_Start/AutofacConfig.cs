@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Http;
 using Demo.Common;
+using Demo.Service;
 
 namespace Demo.WebApi
 {
@@ -23,7 +24,7 @@ namespace Demo.WebApi
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             builder.RegisterType<AppSetting>().As<IAppSetting>().InstancePerRequest();
-            //builder.RegisterType<FetPaySerives>().As<IFetPaySerives>().InstancePerRequest();
+            builder.RegisterType<DemoSerive>().As<IDemoSerive>().InstancePerRequest();
             //builder.RegisterType<FetPayRepository>().As<IFetPayRepository>().InstancePerRequest();
 
             // 將依賴關係解析器(DependencyResolver)設置為Autofac。

@@ -268,6 +268,10 @@
       <Project>{E9E4B522-ED9B-45E8-A339-BCF800379A27}</Project>
       <Name>Demo.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Demo.Service\Demo.Service.csproj">
+      <Project>{601F4439-EDE1-4978-8152-FDA9929B9E77}</Project>
+      <Name>Demo.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

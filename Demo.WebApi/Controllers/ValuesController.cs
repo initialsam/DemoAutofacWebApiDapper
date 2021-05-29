@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Demo.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +10,11 @@ namespace Demo.WebApi.Controllers
 {
     public class ValuesController : ApiController
     {
+        private readonly IDemoSerive _demoService;
+        public ValuesController(IDemoSerive demoService)
+        {
+            _demoService = demoService;
+        }
         // GET api/values
         public IEnumerable<string> Get()
         {
@@ -17,8 +23,8 @@ namespace Demo.WebApi.Controllers
 
         // GET api/values/5
         public string Get(int id)
-        {
-            return "value";
+        { 
+            return _demoService.HappyString(id);
         }
 
         // POST api/values
