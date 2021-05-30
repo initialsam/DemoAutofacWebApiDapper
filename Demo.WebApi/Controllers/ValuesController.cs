@@ -8,6 +8,9 @@ using System.Web.Http;
 
 namespace Demo.WebApi.Controllers
 {
+    /// <summary>
+    /// 預設產生的Api
+    /// </summary>
     public class ValuesController : ApiController
     {
         private readonly IDemoSerive _demoService;
@@ -22,6 +25,12 @@ namespace Demo.WebApi.Controllers
         }
 
         // GET api/values/5
+        /// <summary>
+        /// 有呼叫DemoCrud跟HappyString
+        /// </summary>
+        /// <remarks>呼叫demoService的DemoCrud，HappyString</remarks> 
+        /// <param name="id"></param>
+        /// <returns>HappyString的結果</returns>
         public string Get(int id)
         {
             _demoService.DemoCrud(id);
