@@ -1,4 +1,5 @@
-﻿using Demo.Repository;
+﻿using Demo.Common;
+using Demo.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,12 @@ namespace Demo.Service
 {
     public class DemoSerive:IDemoSerive
     {
-        public readonly IDemoRepository _demoRepository;
-
-        public DemoSerive(IDemoRepository demoRepository)
+        private readonly IDemoRepository _demoRepository;
+        private readonly IComponentLocator _componentLocator;
+        public DemoSerive(IDemoRepository demoRepository, IComponentLocator componentLocator)
         {
             _demoRepository = demoRepository;
+            _componentLocator = componentLocator;
         }
         public bool DemoCrud(int value)
         {
@@ -23,6 +25,12 @@ namespace Demo.Service
         public string HappyString(int value)
         {
             return $"^^{value}^^";
+        }
+
+        public string GetFoo(int value)
+        {
+            var fooService = _componentLocator.ResolveComponent<IFooSerive>();
+            return fooService.GetFoo(value);
         }
     }
 }

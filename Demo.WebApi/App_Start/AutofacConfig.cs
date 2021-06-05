@@ -47,6 +47,7 @@ namespace Demo.WebApi
             RegisterCommon(builder);
             RegisterService(builder);
             RegisterRepo(builder);
+            
 
             //將依賴關係解析器(DependencyResolver)設置為Autofac。
             var container = builder.Build();
@@ -61,11 +62,14 @@ namespace Demo.WebApi
         private static void RegisterService(ContainerBuilder builder)
         {
             builder.RegisterType<DemoSerive>().As<IDemoSerive>().InstancePerRequest();
+            builder.RegisterType<FooSerive>().As<IFooSerive>().InstancePerRequest().PropertiesAutowired();
         }
 
         private static void RegisterCommon(ContainerBuilder builder)
         {
-            builder.RegisterType<AppSetting>().As<IAppSetting>().InstancePerRequest();
+            builder.RegisterType<AppSetting>().As<IAppSetting>().SingleInstance();
+            builder.RegisterType<ComponentLocator>().As<IComponentLocator>().InstancePerRequest();
+
         }
     }
 }

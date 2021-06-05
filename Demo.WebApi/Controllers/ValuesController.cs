@@ -33,6 +33,7 @@ namespace Demo.WebApi.Controllers
         /// <returns>HappyString的結果</returns>
         public string Get(int id)
         {
+            _demoService.GetFoo(id);
             _demoService.DemoCrud(id);
             return _demoService.HappyString(id);
         }

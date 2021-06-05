@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace Demo.Service
 {
-    public interface IDemoSerive
+    public interface IFooSerive
     {
-        string HappyString(int number);
-        bool DemoCrud(int value);
-        string GetFoo(int value);
+        string GetFoo(int number);
     }
 }
