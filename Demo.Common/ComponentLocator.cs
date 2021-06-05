@@ -18,5 +18,10 @@ namespace Demo.Common
         {
             return _container.Resolve<T>();
         }
+
+        public T ResolveKeyedComponent<T>(string key)
+        {
+            return _container.ResolveKeyed<T>(key);
+        }
     }
 }

@@ -62,7 +62,12 @@ namespace Demo.WebApi
         private static void RegisterService(ContainerBuilder builder)
         {
             builder.RegisterType<DemoSerive>().As<IDemoSerive>().InstancePerRequest();
-            builder.RegisterType<FooSerive>().As<IFooSerive>().InstancePerRequest().PropertiesAutowired();
+            
+            builder.RegisterType<AccountAService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountAService)).InstancePerRequest();
+            builder.RegisterType<AccountBService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountBService)).InstancePerRequest();
+            builder.RegisterType<AccountCService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountCService)).InstancePerRequest();
+            builder.RegisterType<AcountStrategy>().As<IAcountStrategy>().InstancePerRequest();
+
         }
 
         private static void RegisterCommon(ContainerBuilder builder)

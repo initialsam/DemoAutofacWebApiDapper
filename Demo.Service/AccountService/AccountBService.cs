@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Demo.Service
 {
-    public class FooSerive:IFooSerive
+    public class AccountBService : IAccountService
     {
         private readonly IDemoRepository _demoRepository;
 
-        public FooSerive(IDemoRepository demoRepository)
+        public AccountBService(IDemoRepository demoRepository)
         {
             _demoRepository = demoRepository;
         }
 
-        public string GetFoo(int value)
+        public string GetAccount(int value)
         {
             var a = _demoRepository.GetType();
-            return $"Foo|{value}";
+            return $"AccountB|{value}";
         }
     }
 }

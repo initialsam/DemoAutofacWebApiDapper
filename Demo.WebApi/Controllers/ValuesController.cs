@@ -33,9 +33,14 @@ namespace Demo.WebApi.Controllers
         /// <returns>HappyString的結果</returns>
         public string Get(int id)
         {
-            _demoService.GetFoo(id);
+            var account = _demoService.GetAccount(id);
             _demoService.DemoCrud(id);
             return _demoService.HappyString(id);
+        }
+
+        public string Get(string key,int id)
+        {
+            return _demoService.GetAccount(key,id);
         }
 
         // POST api/values

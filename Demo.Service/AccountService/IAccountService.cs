@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Demo.Service
 {
-    public interface IFooSerive
+    public interface IAccountService
     {
-        string GetFoo(int number);
+        string GetAccount(int number);
     }
 }

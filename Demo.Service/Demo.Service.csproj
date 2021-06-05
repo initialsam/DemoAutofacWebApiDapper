@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FooSerive.cs" />
+    <Compile Include="AccountService\AccountCService.cs" />
+    <Compile Include="AccountService\AccountBService.cs" />
+    <Compile Include="AccountService\AccountAService.cs" />
+    <Compile Include="AccountService\IAcountStrategy.cs" />
+    <Compile Include="AccountService\AcountStrategy.cs" />
     <Compile Include="DemoSerive.cs" />
-    <Compile Include="IFooSerive.cs" />
+    <Compile Include="AccountService\IAccountService.cs" />
     <Compile Include="IDemoSerive.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

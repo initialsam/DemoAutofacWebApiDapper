@@ -9,5 +9,6 @@ namespace Demo.Common
     public interface IComponentLocator
     {
         T ResolveComponent<T>();
+        T ResolveKeyedComponent<T>(string key);
     }
 }

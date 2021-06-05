@@ -12,10 +12,16 @@ namespace Demo.Service
     {
         private readonly IDemoRepository _demoRepository;
         private readonly IComponentLocator _componentLocator;
-        public DemoSerive(IDemoRepository demoRepository, IComponentLocator componentLocator)
+        private readonly IAcountStrategy _acountStrategy;
+
+        public DemoSerive(
+            IDemoRepository demoRepository, 
+            IComponentLocator componentLocator,
+            IAcountStrategy acountStrategy)
         {
             _demoRepository = demoRepository;
             _componentLocator = componentLocator;
+            _acountStrategy = acountStrategy;
         }
         public bool DemoCrud(int value)
         {
@@ -27,10 +33,17 @@ namespace Demo.Service
             return $"^^{value}^^";
         }
 
-        public string GetFoo(int value)
+        public string GetAccount(int value)
         {
-            var fooService = _componentLocator.ResolveComponent<IFooSerive>();
-            return fooService.GetFoo(value);
+            //沒有特別指定key 就會是最後註冊的AccountCService
+            var accountService = _componentLocator.ResolveComponent<IAccountService>();
+            return accountService.GetAccount(value);
+        }
+
+        public string GetAccount(string key, int value)
+        {
+            var accountService = _acountStrategy.GetAccountService(key);
+            return accountService.GetAccount(value);
         }
     }
 }

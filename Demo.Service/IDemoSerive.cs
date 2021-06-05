@@ -10,6 +10,7 @@ namespace Demo.Service
     {
         string HappyString(int number);
         bool DemoCrud(int value);
-        string GetFoo(int value);
+        string GetAccount(int value);
+        string GetAccount(string key, int value);
     }
 }
