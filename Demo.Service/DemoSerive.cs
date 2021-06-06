@@ -13,7 +13,7 @@ namespace Demo.Service
         private readonly IDemoRepository _demoRepository;
         private readonly IComponentLocator _componentLocator;
         private readonly IAcountStrategy _acountStrategy;
-
+        public Guid MyGuid { get; }
         public DemoSerive(
             IDemoRepository demoRepository, 
             IComponentLocator componentLocator,
@@ -22,6 +22,7 @@ namespace Demo.Service
             _demoRepository = demoRepository;
             _componentLocator = componentLocator;
             _acountStrategy = acountStrategy;
+            MyGuid = Guid.NewGuid();
         }
         public bool DemoCrud(int value)
         {

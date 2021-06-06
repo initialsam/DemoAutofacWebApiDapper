@@ -1,6 +1,8 @@
-﻿using Demo.Service;
+﻿using Demo.Common;
+using Demo.Service;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -31,16 +33,18 @@ namespace Demo.WebApi.Controllers
         /// <remarks>呼叫demoService的DemoCrud，HappyString</remarks> 
         /// <param name="id"></param>
         /// <returns>HappyString的結果</returns>
+        [NoZero]
         public string Get(int id)
         {
+            Debug.WriteLine($"ValuesController MyGuid:{_demoService.MyGuid}");
             var account = _demoService.GetAccount(id);
             _demoService.DemoCrud(id);
             return _demoService.HappyString(id);
         }
 
-        public string Get(string key,int id)
+        public string Get(string key, int id)
         {
-            return _demoService.GetAccount(key,id);
+            return _demoService.GetAccount(key, id);
         }
 
         // POST api/values

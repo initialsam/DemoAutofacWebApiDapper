@@ -24,7 +24,7 @@ namespace Demo.WebApi
 
             // Get your HttpConfiguration.
             var configuration = GlobalConfiguration.Configuration;
-
+            
             // 註冊您的Web API控制器。
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
             //特別指定 AccountBController 的 IAccountService 要是 AccountBService
@@ -34,11 +34,12 @@ namespace Demo.WebApi
                    (pi, ctx) => pi.ParameterType == typeof(IAccountService),
                    (pi, ctx) => ctx.ResolveKeyed<IAccountService>(nameof(AccountBService))))
                 .InstancePerRequest();
-
+    
             RegisterCommon(builder);
             RegisterService(builder);
             RegisterRepo(builder);
-
+            //註冊ActionFilter 也可以屬性注入 SingleInstance
+            builder.RegisterWebApiFilterProvider(configuration);
             // 將依賴關係解析器(DependencyResolver)設置為Autofac。
             var container = builder.Build();
             configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
@@ -63,24 +64,24 @@ namespace Demo.WebApi
 
         private static void RegisterRepo(ContainerBuilder builder)
         {
-            builder.RegisterType<DemoRepository>().As<IDemoRepository>().InstancePerRequest();
+            builder.RegisterType<DemoRepository>().As<IDemoRepository>();
         }
 
         private static void RegisterService(ContainerBuilder builder)
         {
-            builder.RegisterType<DemoSerive>().As<IDemoSerive>().InstancePerRequest();
+            builder.RegisterType<DemoSerive>().As<IDemoSerive>();
             
-            builder.RegisterType<AccountAService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountAService)).InstancePerRequest();
-            builder.RegisterType<AccountBService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountBService)).InstancePerRequest();
-            builder.RegisterType<AccountCService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountCService)).InstancePerRequest();
-            builder.RegisterType<AcountStrategy>().As<IAcountStrategy>().InstancePerRequest();
+            builder.RegisterType<AccountAService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountAService));
+            builder.RegisterType<AccountBService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountBService));
+            builder.RegisterType<AccountCService>().As<IAccountService>().Keyed<IAccountService>(nameof(AccountCService));
+            builder.RegisterType<AcountStrategy>().As<IAcountStrategy>();
 
         }
 
         private static void RegisterCommon(ContainerBuilder builder)
         {
             builder.RegisterType<AppSetting>().As<IAppSetting>().SingleInstance();
-            builder.RegisterType<ComponentLocator>().As<IComponentLocator>().InstancePerRequest();
+            builder.RegisterType<ComponentLocator>().As<IComponentLocator>();
 
         }
     }

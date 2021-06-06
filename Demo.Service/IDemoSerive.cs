@@ -12,5 +12,6 @@ namespace Demo.Service
         bool DemoCrud(int value);
         string GetAccount(int value);
         string GetAccount(string key, int value);
+        Guid MyGuid { get; }
     }
 }
