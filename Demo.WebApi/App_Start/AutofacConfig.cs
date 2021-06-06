@@ -27,6 +27,13 @@ namespace Demo.WebApi
 
             // 註冊您的Web API控制器。
             builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            //特別指定 AccountBController 的 IAccountService 要是 AccountBService
+            builder.RegisterType<AccountBController>()
+                .WithParameter(
+                 new ResolvedParameter(
+                   (pi, ctx) => pi.ParameterType == typeof(IAccountService),
+                   (pi, ctx) => ctx.ResolveKeyed<IAccountService>(nameof(AccountBService))))
+                .InstancePerRequest();
 
             RegisterCommon(builder);
             RegisterService(builder);

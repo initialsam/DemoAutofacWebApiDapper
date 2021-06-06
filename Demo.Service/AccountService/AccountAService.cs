@@ -19,7 +19,7 @@ namespace Demo.Service
         public string GetAccount(int value)
         {
             var a = _demoRepository.GetType();
-            return $"AccountA|{value}";
+            return $"{this.GetType().Name}|{value}";
         }
     }
 }
